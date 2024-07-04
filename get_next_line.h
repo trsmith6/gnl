@@ -6,36 +6,28 @@
 /*   By: trsmith <trsmith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 11:41:16 by trsmith           #+#    #+#             */
-/*   Updated: 2024/04/12 09:54:39 by trsmith          ###   ########.fr       */
+/*   Updated: 2024/07/04 09:13:07 by trsmith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 10
-# endif
-
-# include <stdio.h>
 # include <stdlib.h>
-# include <fcntl.h>
 # include <unistd.h>
 
-typedef struct s_list
-{
-	char			*str_buf;
-	struct s_list	*next;
-}					t_list;
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 10000
+# endif
 
-char	*get_next_line(int fd);
-char	*data_filling(int fd, char *data, char *buffer);
-char	*extract_line(char *data, char *line);
-char	*extract_new_data(char *data);
+# ifndef FD_MAX
+#  define FD_MAX 8192
+# endif
+
+int		get_next_line(int fd, char **line);
+size_t	ft_strlen(const char *s);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strchr(const char *s, int c);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strdup(const char *s1);
-size_t	ft_strlen(const char *s);
 
 #endif
